@@ -1,5 +1,5 @@
 # Kivy-login-screen
-making kivy login screen with mobile phone
+#making kivy login screen with mobile phone
 
 from kivy.app import App
 from kivy.lang import Builder
@@ -24,7 +24,7 @@ from kivy.uix.popup import Popup
 
 
 Builder.load_file('login.kv')
-
+# defining global variables 
 global_email=''
 global_generated_otp=''
 generated_otp=''
@@ -52,7 +52,7 @@ class welcome_screen(Screen):
     
 class signup_screen(Screen):
     def signup(self,name,email,password1,password2):
-        #create table        
+        #create table in sqlite      
         conn=sqlite3.connect('login.db',timeout=10)
         cursor=conn.cursor()
         cursor.execute('''CREATE TABLE IF NOT EXISTS login_system(name TEXT,email TEXT NULL UNIQUE,password TEXT NULL)''')
