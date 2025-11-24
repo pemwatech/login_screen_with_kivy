@@ -1,0 +1,306 @@
+<welcome_screen>:
+    
+            
+    FloatLayout:
+        Image:
+            source: 'bg2.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {'x': 0, 'y': 0}
+        
+
+        Image:
+            source: 'my_logo.jpg'
+            allow_stretch: False
+            keep_ratio: True
+            size_hint:0.8,0.8
+            pos_hint: {'x': 0.1, 'y': 0.3}
+            
+            
+
+        Label:
+            text: 'Welcome'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            font_size: 50
+
+        ProgressBar:
+            id: progressbar
+            value: 0
+            max: 60
+            size_hint: .7, None
+            height: 30
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            color:1,0,0,1
+
+        Label:
+            id: status
+            text: ''
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            color: 0, 1, 0, 1
+
+        Label:
+            text: '© 2025 pemwa tech. All rights reserved'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            font_size: 30
+    
+    
+
+<signup_screen>:
+    on_leave:
+        name.text=''
+        email.text=''
+        password1.text=''
+        password2.text=''
+        status.text=''
+    FloatLayout:
+        Image:
+            source:'bg.jpg'
+            keep_ratio:False
+            allow_stretch:True
+            size_hint:1,1
+            pos_hint:{'x':0,'y':0}
+            
+        Label:
+            text:'Signup form'
+            font_size:50
+            pos_hint:{'center_x':0.5,'center_y':0.9}
+        
+            
+        TextInput:
+            id:name
+            halign:'center'
+            multiline:False
+            size_hint:0.5,0.05
+            hint_text:'Enter your name'
+            pos_hint:{'center_x':0.5,'center_y':0.7}
+        
+        TextInput:
+            id:email
+            halign:'center'
+            multiline:False
+            size_hint:0.5,0.05
+            hint_text:'Enter your email'
+            pos_hint:{'center_x':0.5,'center_y':0.6}
+            
+        TextInput:
+            id:password1
+            password:True
+            halign:'center'
+            multiline:False
+            size_hint:0.5,0.05
+            hint_text:'Enter password'
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            
+        TextInput:
+            password:True
+            id:password2
+            halign:'center'
+            multiline:False
+            size_hint:0.5,0.05
+            hint_text:'Confirm password'
+            pos_hint:{'center_x':0.5,'center_y':0.4}
+        Label:
+            id:status
+            text:''
+            color:1,0,0,1
+            pos_hint:{'center_x':0.5,'center_y':0.3}
+        Button:
+            text:'Signup'
+            size_hint:0.2,0.05
+            pos_hint:{'center_x':0.5,'center_y':0.25}
+            on_press:root.signup(name.text,email.text,password1.text,password2.text)
+        Label:
+            text:'already registered?'
+            pos_hint:{'center_x':0.5,'center_y':0.15}
+        Button:
+            text:'login'
+            size_hint:0.2,0.05
+            pos_hint:{'center_x':0.5,'center_y':0.1}
+            on_press:root.manager.current='login_screen'
+    
+  
+              
+      
+    
+    
+   
+        
+         
+        
+<login_screen>:
+    on_leave:
+        email.text=''
+        password.text=''
+        status.text=''
+    
+    FloatLayout:
+        Image:
+            source:'bg2.jpg'
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            pos_hint:{'x':0,'y':0}
+            
+                
+        
+        Label:
+            text:'Login'
+            pos_hint:{'center_x':0.5,'center_y':0.9}
+            font_size:40
+           
+        TextInput:
+            id:email
+            multiline:False
+            halign:'center'
+            hint_text:'Enter your email'
+            pos_hint:{'center_x':0.5,'center_y':0.7}
+            
+            size_hint:0.5,0.05
+        TextInput:
+            id:password
+            password:True
+            multiline:False
+            halign:'center'
+            hint_text:'Enter password'
+            pos_hint:{'center_x':0.5,'center_y':0.6}
+            size_hint:0.5,0.05
+        Label:
+            id:status
+            text:''
+            color:1,0,0,1
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+        Button:
+            text:'login'
+            size_hint:0.2,0.05
+            pos_hint:{'center_x':0.5,'center_y':0.4}
+        
+            on_press:root.check_details(password.text)
+            
+        Label:
+            text:'Not registered?'
+            pos_hint:{'center_x':0.5,'center_y':0.3}
+            
+            
+        Button:
+            text:'Signup'
+            pos_hint:{'center_x':0.5,'center_y':0.2}
+            size_hint:0.2,0.05
+            on_press:root.manager.current='signup_screen'
+ 
+                    
+<resend_otp_screen>:
+    on_leave:
+        otp.text=''
+        status.text=''
+    
+    FloatLayout:
+        Image:
+            source:'bg1.png'
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            pos_hint:{'x':0,'y':0}
+            
+                
+        
+        Label:
+            text:'Otp Verification'
+            pos_hint:{'center_x':0.5,'center_y':0.9}
+            font_size:40
+           
+        
+        TextInput:
+            id:otp
+            multiline:False
+            halign:'center'
+            hint_text:'Enter otp'
+            pos_hint:{'center_x':0.5,'center_y':0.6}
+            size_hint:0.5,0.05
+        Label:
+            id:status
+            text:''
+            color:1,0,0,1
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+        Button:
+            text:'verify'
+            size_hint:0.2,0.05
+            pos_hint:{'center_x':0.5,'center_y':0.4}
+            on_press:root.check_otp()
+               
+        Button:
+            text:'resend otp'
+            pos_hint:{'center_x':0.5,'center_y':0.3}
+            size_hint:0.2,0.05
+            on_press:root.resend_otp()
+               
+        Button:
+            text:'back'
+            pos_hint:{'center_x':0.5,'center_y':0.2}
+            size_hint:0.2,0.05
+            on_press:root.manager.current='login_screen'  
+            
+<otp_screen>:
+    on_leave:
+        otp.text=''
+        status.text=''
+    
+    FloatLayout:
+        Image:
+            source:'bg1.png'
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            pos_hint:{'x':0,'y':0}
+            
+                
+        
+        Label:
+            text:'Otp Verification'
+            pos_hint:{'center_x':0.5,'center_y':0.9}
+            font_size:40
+           
+        
+        TextInput:
+            id:otp
+            multiline:False
+            halign:'center'
+            hint_text:'Enter otp'
+            pos_hint:{'center_x':0.5,'center_y':0.6}
+            size_hint:0.5,0.05
+        Label:
+            id:status
+            text:''
+            color:1,0,0,1
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+        Button:
+            text:'verify'
+            size_hint:0.2,0.05
+            pos_hint:{'center_x':0.5,'center_y':0.4}
+            on_press:root.check_otp()
+               
+        Button:
+            text:'resend otp'
+            pos_hint:{'center_x':0.5,'center_y':0.3}
+            size_hint:0.2,0.05
+            on_press:root.resend_otp()
+               
+        Button:
+            text:'back'
+            pos_hint:{'center_x':0.5,'center_y':0.2}
+            size_hint:0.2,0.05
+            on_press:root.manager.current='login_screen'  
+                                                                                      
+<dashboard_screen>:
+    FloatLayout:
+        Image:
+            source:'bg1.png'
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            pos_hint:{'x':0,'y':0}
+        Label:
+            text:'Welcome '
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            font_size:70
+                    
