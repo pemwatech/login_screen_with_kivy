@@ -21,12 +21,14 @@ import random
 from email.message import EmailMessage
 from kivy.uix.popup import Popup
 
-
+#loading the kivy file
 Builder.load_file('login.kv')
 # defining global variables 
 global_email=''
 global_generated_otp=''
 generated_otp=''
+
+ 
 
 class welcome_screen(Screen):
     def on_enter(self):
@@ -74,7 +76,7 @@ class signup_screen(Screen):
                     conn.close()
                else:
                     try:
-                        popup=Popup(title='Success',content =Label(text='Registered succefull'),size_hint=(0.4,0.3))
+                        popup=Popup(title='Success',content =Label(text='Registered successfull'),size_hint=(0.4,0.3))
                         popup.open()
                         Clock.schedule_interval(lambda dt:popup.dismiss(),1)
                          
