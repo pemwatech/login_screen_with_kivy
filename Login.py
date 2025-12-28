@@ -18,7 +18,6 @@ from kivy.uix.image import Image
 from kivy.core.window import Window
 import sqlite3
 import random
-import smtplib
 from email.message import EmailMessage
 from kivy.uix.popup import Popup
 
