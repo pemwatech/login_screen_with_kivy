@@ -83,6 +83,13 @@ class signup_screen(Screen):
                         cursor.execute('INSERT INTO login_system(name,password,email) VALUES (?,?,?)',(name,password1,email))
                         conn.commit()
                         conn.close()
+popup=Popup(title='Success',content =Label(text='Registered successfull'),size_hint=(0.4,0.3))
+                        popup.open()
+                        Clock.schedule_interval(lambda dt:popup.dismiss(),1)
+
+
+
+
                         self.manager.current='login_screen'
                         
                        
@@ -95,9 +102,6 @@ class signup_screen(Screen):
            except  sqlite3.Error as e:
                     self.ids.status.text=f'{e}'  
                     conn.close()
-popup=Popup(title='Success',content =Label(text='Registered successfull'),size_hint=(0.4,0.3))
-                        popup.open()
-                        Clock.schedule_interval(lambda dt:popup.dismiss(),1)
 
            except  Exception as e:
                     self.ids.status.text=f'{e}'
